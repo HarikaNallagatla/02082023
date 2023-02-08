@@ -1,0 +1,31 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:s="clr-namespace:System;assembly=mscorlib"
+                    mc:Ignorable="d"
+                    x:Class="WPFProject.GermanLanguage">
+    <s:String x:Key="keyAccess_Code">Zugangscode</s:String>
+    <s:String x:Key="keyBoarding_Pass">Boarding Pass</s:String>
+    <s:String x:Key="keyBoarding_Pass_is_scanned_successfully">Die Bordkarte wurde erfolgreich gescannt.</s:String>
+    <s:String x:Key="keyFirst_one_hour_free;recharge_for_additional_hours">Die erste Stunde kostenlos, für weitere Stunden aufladen</s:String>
+    <s:String x:Key="keyFree_Wi-Fi">Gratis Wifi</s:String>
+    <s:String x:Key="keyGet_one_hour_access_in_3_easy_steps">Holen Sie sich eine Stunde Zugang in 3 einfachen Schritten</s:String>
+    <s:String x:Key="keyGet_Wi-Fi">Holen Sie sich Wi-Fi</s:String>
+    <s:String x:Key="keyNext">Nächster</s:String>
+    <s:String x:Key="keyPass_Code_to_connect_to_Wi-Fi">Pass code zum Verbinden mit Wi-Fi</s:String>
+    <s:String x:Key="keyPassport">Pass</s:String>
+    <s:String x:Key="keyPassport_is_scanned_successfully">Reisepass wurde erfolgreich gescannt</s:String>
+    <s:String x:Key="keyPlease_Scan_your_Boarding_Pass">Bitte scannen Sie Ihre Bordkarte</s:String>
+    <s:String x:Key="keyPlease_Scan_your_Passport">Bitte scannen Sie Ihren Reisepass</s:String>
+    <s:String x:Key="keyPrint">drucken</s:String>
+    <s:String x:Key="keyScan_In_progress.Please_wait">Scan wird ausgeführt. Bitte warten..</s:String>
+    <s:String x:Key="keyScan_your">Scannen Sie Ihre</s:String>
+    <s:String x:Key="keyScan_your_Boarding_Pass">scannen Sie Ihre Bordkarte</s:String>
+    <s:String x:Key="keyScan_your_Passport">Scannen Sie Ihren Reisepass</s:String>
+    <s:String x:Key="keyStart">Anfang</s:String>
+    <s:String x:Key="keyWelcome">willkommen</s:String>
+    <s:String x:Key="keyWi-Fi_Access_Code">Wi-Fi-Zugangscode</s:String>
+    <s:String x:Key="keyClick_on_the_flag_to_select_the_language">Klicken Sie auf die Flagge, um die Sprache auszuwählen</s:String>
+
+</ResourceDictionary>

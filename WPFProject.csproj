@@ -1,0 +1,93 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Images\BoardingPassScanScreen\Images\**" />
+    <Compile Remove="Properties\**" />
+    <EmbeddedResource Remove="Images\BoardingPassScanScreen\Images\**" />
+    <EmbeddedResource Remove="Properties\**" />
+    <None Remove="Images\BoardingPassScanScreen\Images\**" />
+    <None Remove="Properties\**" />
+    <Page Remove="Images\BoardingPassScanScreen\Images\**" />
+    <Page Remove="Properties\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Images\BoardingPass.jpg" />
+    <None Remove="Images\BoardingPassScanScreen\BoardingPass.jpg" />
+    <None Remove="Images\Footer4.jpg" />
+    <None Remove="Images\HomeScreen\ScanBoardingPass.jpg" />
+    <None Remove="Images\HomeScreen\ScanPassport.jpg" />
+    <None Remove="Images\HomeScreen\WifiAccessCode.jpg" />
+    <None Remove="Images\Hotel Ad Banner.jpg" />
+    <None Remove="Images\PassportScan.jpg" />
+    <None Remove="Images\PassportScanScreen\Images\PassportScan.jpg" />
+    <None Remove="Images\Sample video.mp4" />
+    <None Remove="Images\ScanBoardingPass.jpg" />
+    <None Remove="Images\ScanPassport.jpg" />
+    <None Remove="Images\WifiAccessCode.jpg" />
+    <None Remove="Images\WifiAccessCodeScreen\WifiAccessConnection.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\BoardingPassScanScreen\BoardingPass.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\HomeScreen\ScanBoardingPass.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\HomeScreen\WifiAccessCode.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\PassportScanScreen\Images\PassportScan.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\WifiAccessCodeScreen\WifiAccessConnection.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Images\HomeScreen\Images\" />
+    <Folder Include="ViewModel\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Barcode" Version="2023.2.2" />
+    <PackageReference Include="System.ComponentModel" Version="4.3.0" />
+    <PackageReference Include="System.ComponentModel.Composition" Version="7.0.0" />
+    <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
+    <PackageReference Include="System.Runtime.InteropServices" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="CuCustomWndAPIWrp">
+      <HintPath>lib\CuCustomWndAPIWrp.dll</HintPath>
+    </Reference>
+    <Reference Include="deskomrznet">
+      <HintPath>lib\deskomrznet.dll</HintPath>
+    </Reference>
+    <Reference Include="pagescannet">
+      <HintPath>lib\pagescannet.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Sample video.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\HomeScreen\ScanPassport.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>
