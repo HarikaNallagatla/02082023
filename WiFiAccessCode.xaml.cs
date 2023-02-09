@@ -112,22 +112,39 @@ namespace WPFProject
                 #endregion
 
                 #region Printingtheaccsscode
+                string imgurl = @"/Images/Wifiaccesscodescreen/wifi.png";
+                Image imgwifi = new Image();
+                imgwifi.Source = new BitmapImage(new Uri(imgurl));
+                imgwifi.Height = 30;
+                imgwifi.Width = 30;
+                Image imgqrcode = new Image();
+                imgqrcode.Width = 40;
+                imgqrcode.Height = 40;
+                imgqrcode.Source = imgsrc;
                 PrintDialog printdialog = new PrintDialog();
                 StringBuilder sb =
                     new StringBuilder();
-                sb.AppendLine("Chatrapathi Shivaji Maharaj ");
-                sb.AppendLine("International Airport");
-                sb.AppendLine("Mumbai,India.");
-                StringBuilder stringbuilder = new StringBuilder();
-                string imgurl = @"/Images/Wifiaccesscodescreen/wifi.png";
-                stringbuilder.AppendLine("<img src='" + imgurl + "'  style='width: 30px; height: 30px' />");
-                sb.Append(" <b> Free WiFi</b>");
-                sb.AppendLine("              <b>Access Code</b>");
-                sb.AppendLine("Network:WiFi");
-                sb.AppendLine("User:ABCD");
-                sb.Append("<img src='" + imgsrc + "'  style='width: 30px; height: 30px' />");
+                FlowDocument flowdocument = new FlowDocument();
+                flowdocument.Name = "flowdoc";
+                Section sec = new Section();
+                Paragraph p1 = new Paragraph();
+                Paragraph p2 = new Paragraph();
+                StringBuilder sb2 = new StringBuilder();
+
+                sb.AppendLine("       Chatrapathi Shivaji Maharaj ");
+                sb.AppendLine("         International Airport");
+                sb.AppendLine("              Mumbai,India.");
+                p1.Inlines.Add(sb.ToString());
+                p1.Inlines.Add(imgwifi);
+                sb2.Append("  Free WiFi");
+                sb2.AppendLine("              Access Code");
+                sb2.AppendLine("Network:  WiFi");
+                sb2.AppendLine("User:     ABCD");
+                p1.Inlines.Add(sb2.ToString());
+                p1.Inlines.Add(imgqrcode);
                 Bold bold = new Bold();
                 bold.Inlines.Add("Password:" + accesscode);
+                p1.Inlines.Add(bold);
                 StringBuilder sb1 = new StringBuilder();
                 sb1.AppendLine("---------------------------");
                 sb1.AppendLine("Issued On:");
@@ -137,13 +154,6 @@ namespace WPFProject
                 sb1.AppendLine();
                 sb1.AppendLine("For Terms & Conditions of use ");
                 sb1.AppendLine("please check back side.");
-                FlowDocument flowdocument = new FlowDocument();
-                flowdocument.Name = "flowdoc";
-                Section sec = new Section();
-                Paragraph p1 = new Paragraph();
-                p1.Inlines.Add(sb.ToString());
-                p1.Inlines.Add(bold);
-                Paragraph p2 = new Paragraph();
                 p2.Inlines.Add(sb1.ToString());
                 sec.Blocks.Add(p1);
                 sec.Blocks.Add(p2);

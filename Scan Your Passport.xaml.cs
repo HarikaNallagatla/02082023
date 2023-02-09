@@ -262,7 +262,7 @@ namespace WPFProject
                 }
                 Bitmap Image = Api.GetImage(
                             LightSource.Infrared,
-                            ImageClipping.Mrz);
+                            ImageClipping.None);
                 mediaelement.Source = ConvertBitmap(Image).UriSource;
             }
             catch (Exception ex)
