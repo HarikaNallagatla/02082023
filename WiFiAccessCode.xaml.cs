@@ -51,7 +51,7 @@ namespace WPFProject
             SetLanguage("en-US");
 
             Random random = new Random();
-            string accesscode = (random.Next(100000, 999999)).ToString();
+             accesscode = (random.Next(100000, 999999)).ToString();
             //HttpClientHandler clientHandler = new HttpClientHandler();
             //clientHandler.ServerCertificateCustomValidationCallback += (sender, cert, chain, SslPolicyErrors) => { return true; };
             //clientHandler.SslProtocols = SslProtocols.None;
@@ -106,20 +106,62 @@ namespace WPFProject
 
                 using (HttpClient client = new HttpClient())
                 {
-                    var imagebytearray = await client.GetByteArrayAsync("https://api.qrserver.com/v1/create-qr-code/?data=" + accesscode + "&size=40x40");
+                    string url= "https://api.qrserver.com/v1/create-qr-code/?data=" + accesscode + "&size=100x100";
+                    var imagebytearray = await client.GetByteArrayAsync(url);
                     imgsrc = ByteToImage(imagebytearray);
                 }
                 #endregion
 
                 #region Printingtheaccsscode
-                string imgurl = @"/Images/Wifiaccesscodescreen/wifi.png";
+                //PrintDialog printdialog = new PrintDialog();
+                //StringBuilder sb =
+                //    new StringBuilder();
+                //sb.AppendLine("Chatrapathi Shivaji Maharaj ");
+                //sb.AppendLine("International Airport");
+                //sb.AppendLine("Mumbai,India.");
+                //StringBuilder stringbuilder = new StringBuilder();
+                //string imgurl = @"/Images/Wifiaccesscodescreen/wifi.jpg";
+                //stringbuilder.AppendLine("<img src='" + imgurl + "'  style='width: 30px; height: 30px' />");
+                //sb.Append(" <b> Free WiFi</b>");
+                //sb.AppendLine("              <b>Access Code</b>");
+                //sb.AppendLine("Network:WiFi");
+                //sb.AppendLine("User:ABCD");
+                //sb.Append("<img src='" + imgsrc + "'  style='width: 30px; height: 30px' />");
+                //Bold bold = new Bold();
+                //bold.Inlines.Add("Password:" + accesscode);
+                //StringBuilder sb1 = new StringBuilder();
+                //sb1.AppendLine("---------------------------");
+                //sb1.AppendLine("Issued On:");
+                //sb1.Append("            " + DateTime.Now.ToString());
+                //sb1.AppendLine("Valid Till:            24 hrs");
+                //sb1.AppendLine("Registered User:            Harika");
+                //sb1.AppendLine();
+                //sb1.AppendLine("For Terms & Conditions of use ");
+                //sb1.AppendLine("please check back side.");
+                //FlowDocument flowdocument = new FlowDocument();
+                //flowdocument.Name = "flowdoc";
+                //Section sec = new Section();
+                //Paragraph p1 = new Paragraph();
+                //p1.Inlines.Add(sb.ToString());
+                //p1.Inlines.Add(bold);
+                //Paragraph p2 = new Paragraph();
+                //p2.Inlines.Add(sb1.ToString());
+                //sec.Blocks.Add(p1);
+                //sec.Blocks.Add(p2);
+                //flowdocument.Blocks.Add(sec);
+                //IDocumentPaginatorSource idpsource = flowdocument;
+                //printdialog.PrintDocument(idpsource.DocumentPaginator, string.Empty);
+                #endregion
+                #region Printing
+                string imgurl = @"/Images/Wifiaccesscodescreen/wifi.jpg";
                 Image imgwifi = new Image();
-                imgwifi.Source = new BitmapImage(new Uri(imgurl));
+                imgwifi.Source = new BitmapImage(new Uri(imgurl,UriKind.Relative));
                 imgwifi.Height = 30;
                 imgwifi.Width = 30;
                 Image imgqrcode = new Image();
-                imgqrcode.Width = 40;
-                imgqrcode.Height = 40;
+                imgqrcode.Width = 100;
+                imgqrcode.Height = 100;
+                imgqrcode.Margin = new Thickness(95,0,20,0);
                 imgqrcode.Source = imgsrc;
                 PrintDialog printdialog = new PrintDialog();
                 StringBuilder sb =
@@ -130,27 +172,32 @@ namespace WPFProject
                 Paragraph p1 = new Paragraph();
                 Paragraph p2 = new Paragraph();
                 StringBuilder sb2 = new StringBuilder();
+                StringBuilder sb3 = new StringBuilder();
 
-                sb.AppendLine("       Chatrapathi Shivaji Maharaj ");
-                sb.AppendLine("         International Airport");
-                sb.AppendLine("              Mumbai,India.");
+                sb.AppendLine("           Chatrapathi Shivaji Maharaj ");
+                sb.AppendLine("              International Airport");
+                sb.AppendLine("                   Mumbai,India.");
                 p1.Inlines.Add(sb.ToString());
                 p1.Inlines.Add(imgwifi);
-                sb2.Append("  Free WiFi");
-                sb2.AppendLine("              Access Code");
+                sb2.AppendLine();
+                sb2.AppendLine("                    Free WiFi");
+                sb2.AppendLine("                     Access Code");
                 sb2.AppendLine("Network:  WiFi");
-                sb2.AppendLine("User:     ABCD");
+                sb2.AppendLine("User:   ABCD");
+                sb2.AppendLine();
                 p1.Inlines.Add(sb2.ToString());
                 p1.Inlines.Add(imgqrcode);
                 Bold bold = new Bold();
-                bold.Inlines.Add("Password:" + accesscode);
+                bold.Inlines.Add("              Password:" + accesscode);
+                sb3.AppendLine();
+                p1.Inlines.Add(sb3.ToString());
                 p1.Inlines.Add(bold);
                 StringBuilder sb1 = new StringBuilder();
-                sb1.AppendLine("---------------------------");
-                sb1.AppendLine("Issued On:");
-                sb1.Append("            " + DateTime.Now.ToString());
-                sb1.AppendLine("Valid Till:            24 hrs");
-                sb1.AppendLine("Registered User:            Harika");
+                sb1.AppendLine("--------------------------------------------");
+                sb1.Append("Issued On:");
+                sb1.AppendLine("   " + DateTime.Now.ToString());
+                sb1.AppendLine("Valid Till:    24 hrs");
+                sb1.AppendLine("Registered User:  Harika");
                 sb1.AppendLine();
                 sb1.AppendLine("For Terms & Conditions of use ");
                 sb1.AppendLine("please check back side.");
@@ -160,9 +207,6 @@ namespace WPFProject
                 flowdocument.Blocks.Add(sec);
                 IDocumentPaginatorSource idpsource = flowdocument;
                 printdialog.PrintDocument(idpsource.DocumentPaginator, string.Empty);
-                #endregion
-                #region Printing
-
 
 
                 //customWndAPIWrap = new CuCustomWndAPIWrap(CuCustomWndAPIWrap.CcwLogVerbosity.CCW_LOG_DEEP_DEBUG, null);
@@ -183,7 +227,7 @@ namespace WPFProject
             catch (Exception ex)
             {
 
-                throw;
+                MessageBox.Show(ex.Message);
             }
         }
         public static ImageSource ByteToImage(byte[] imageData)
