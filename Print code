@@ -1,0 +1,71 @@
+ using (HttpClient client = new HttpClient())
+                {
+                    var imagebytearray = await client.GetByteArrayAsync("https://api.qrserver.com/v1/create-qr-code/?data=" + accesscode + "&size=40x40");
+                    imgsrc = ByteToImage(imagebytearray);
+                }
+                #endregion
+
+                #region Printingtheaccsscode
+                string imgurl = @"/Images/Wifiaccesscodescreen/wifi.png";
+                Image imgwifi = new Image();
+                imgwifi.Source = new BitmapImage(new Uri(imgurl));
+                imgwifi.Height = 30;
+                imgwifi.Width = 30;
+
+                Image imgqrcode = new Image();
+                imgqrcode.Width = 40;
+                imgqrcode.Height = 40;
+                imgqrcode.Source = imgsrc;
+                PrintDialog printdialog = new PrintDialog();
+                StringBuilder sb =
+                    new StringBuilder();
+                FlowDocument flowdocument = new FlowDocument();
+                flowdocument.Name = "flowdoc";
+                Section sec = new Section();
+                Paragraph p1 = new Paragraph();
+                Paragraph p2 = new Paragraph();
+                Paragraph p3 = new Paragraph();
+                Paragraph p4 = new Paragraph();
+                Paragraph p5 = new Paragraph();
+                StringBuilder sb2 = new StringBuilder();
+                StringBuilder sb3 = new StringBuilder();
+                Figure fg1 = new Figure();
+                Figure fg2 = new Figure();
+                fg1.HorizontalAnchor = System.Windows.FigureHorizontalAnchor.ColumnLeft;
+                fg2.HorizontalAnchor = System.Windows.FigureHorizontalAnchor.ColumnRight;
+                fg1.VerticalAnchor = System.Windows.FigureVerticalAnchor.ParagraphTop;
+                fg2.VerticalAnchor = System.Windows.FigureVerticalAnchor.ParagraphTop;
+                sb.AppendLine("       Chatrapathi Shivaji Maharaj ");
+                sb.AppendLine("          International Airport");
+                sb.AppendLine("              Mumbai,India.");
+                p1.Inlines.Add(sb.ToString());
+               // p1.Inlines.Add(imgwifi);
+                sb2.Append("  Free WiFi");
+                sb2.AppendLine("              Access Code");
+                sb3.AppendLine("Network:  WiFi");
+                sb3.AppendLine("User:     ABCD");
+                p1.Inlines.Add(sb2.ToString());
+                p3.Inlines.Add(sb3.ToString());
+                p4.Inlines.Add(imgqrcode);
+                Bold bold = new Bold();
+                bold.Inlines.Add("Password:" + accesscode);
+                p3.Inlines.Add(bold);
+                fg1.Blocks.Add(p3);
+                fg2.Blocks.Add(p4);
+                p5.Inlines.Add(fg1);
+                p5.Inlines.Add(fg2);
+                StringBuilder sb1 = new StringBuilder();
+                sb1.AppendLine("---------------------------");
+                sb1.Append("Issued On:");
+                sb1.AppendLine(" " + DateTime.Now.ToString());
+                sb1.AppendLine("Valid Till:   24 hrs");
+                sb1.AppendLine("Registered User:  Harika");
+                sb1.AppendLine();
+                sb1.AppendLine("For Terms & Conditions of use ");
+                sb1.AppendLine("please check back side.");
+                p2.Inlines.Add(sb1.ToString());
+                sec.Blocks.Add(p1);
+                sec.Blocks.Add(p2);
+                flowdocument.Blocks.Add(sec);
+                IDocumentPaginatorSource idpsource = flowdocument;
+                printdialog.PrintDocument(idpsource.DocumentPaginator, string.Empty);
